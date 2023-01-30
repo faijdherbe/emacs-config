@@ -8,9 +8,9 @@
 This is the main entry point for my literate configuration.  I've
 decided to split my configurations into seperate ~.org~ files to keep
 related stuff together.  You can find this configuration at [[https://github.com/faijdherbe/emacs-config][GitHub]],
-and on [[https://faijdherbe.net/emacs-conf][https://faijdherbe.net]].
+and on [[https://www.faijdherbe.net][www.faijdherbe.net]].
 
-To use this configuration add the following codeblock to you
+To use this configuration add the following codeblock to your
 =~/.emacs.d/init.el=, changing the path to this configuration file
 accordingly.
 
@@ -30,9 +30,11 @@ evaluate immediately.
 #+end_src
 
 * Testing                                                          :noexport:
+
 To test this configuration we can execute this codeblock.  It will
 tangle the =init.el=, and launch emacs a new subprocess.  Just press
-=C-c C-c= to start testing. 
+=C-c C-c= to start testing.
+ 
 #+begin_src emacs-lisp :tangle no
 (org-babel-tangle-file (buffer-file-name))
 (call-process "emacs" nil 0 nil "-Q" "-l" "init.el" "--debug")
