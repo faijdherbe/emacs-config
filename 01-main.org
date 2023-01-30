@@ -7,7 +7,8 @@
 * Main config
 This is the main entry point for my literate configuration.  I've
 decided to split my configurations into seperate ~.org~ files to keep
-related stuff together.  You can also find this configuration at [[https://github.com/faijdherbe/emacs-config][GitHub]].
+related stuff together.  You can find this configuration at [[https://github.com/faijdherbe/emacs-config][GitHub]],
+and on [[https://faijdherbe.net/emacs-conf][https://faijdherbe.net]].
 
 To use this configuration add the following codeblock to you
 =~/.emacs.d/init.el=, changing the path to this configuration file
