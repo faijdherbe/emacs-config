@@ -1,5 +1,6 @@
 #+TITLE: Literate Emacs Configuration
 #+AUTHOR: Jeroen Faijdherbe
+#+DRAFT: true
 
 Welcome to my literate Emacs configuration.
 
