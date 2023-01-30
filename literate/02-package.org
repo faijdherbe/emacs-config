@@ -65,7 +65,3 @@ installing new packages or updates...
 #+end_src
 
 
-* Drop little message
-  #+begin_src emacs-lisp
-(message "loaded main")
-  #+end_src
