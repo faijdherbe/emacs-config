@@ -1,0 +1,71 @@
+#+TITLE: Package Config
+#+DATE: 2023-01-22T15:17:01+01:00
+#+DRAFT: false
+#+PROPERTY: header-args:emacs-lisp :comments link :results none
+#+TAGS[]: 
+
+* Repositories
+First we'll setup our different repositories.
+
+#+begin_quote note
+I'm not entirely sure these are all still relevant, as this is a
+copy/paste from my current =init.el=, I will have to look into this at
+a later stage.
+#+end_quote
+
+#+begin_src emacs-lisp
+(require 'package)
+
+(setq package-enable-at-startup nil)
+
+(setq package-archives '(("nongnu" . "https://elpa.nongnu.org/nongnu/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("tromey"  . "http://tromey.com/elpa/")))
+(package-initialize)
+#+END_SRC
+
+* Package managers
+Install some package managers.  This is a copy/paste of my current
+package managers setup, and it installs two different managers.  I'm
+not really fond of working with multiple managers, but right now I
+don't want to look into this yet.  I've added them both, but disabled
+=straight= as I don't think I'll need it right away.
+  
+** use-package
+#+begin_src emacs-lisp
+;;; Bootstrapping use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+#+end_src
+
+** straight
+/Disabled for now/, as I'm not sure when I'll need it.  Maybe I can
+replace =use-package= whenever there is a need to install =straight=.
+Leaving it here for quick access though.  Also, this code pulls a
+script from github and executes it right away. this does not sound
+very secure to me, although the same thing kind of happens when
+installing new packages or updates...
+
+#+begin_src emacs-lisp :tangle no 
+;; Bootstrapping straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+#+end_src
+
+
+* Drop little message
+  #+begin_src emacs-lisp
+(message "loaded main")
+  #+end_src

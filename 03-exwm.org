@@ -1,0 +1,11 @@
+#+TITLE: EXWM Config
+#+DATE: 2023-01-22T10:02:31+01:00
+#+DRAFT: true
+#+TAGS[]: emacs config exwm
+#+PROPERTY: header-args:emacs-lisp :comments link
+
+* EXWM
+  #+begin_src emacs-lisp
+;; todo
+  #+end_src
+

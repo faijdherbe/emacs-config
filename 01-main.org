@@ -1,0 +1,62 @@
+#+TITLE: Main Config
+#+DATE: 2023-01-22T10:02:31+01:00
+#+DRAFT: false
+#+TAGS[]: emacs config
+#+PROPERTY: header-args:emacs-lisp :comments link :results none 
+
+* Main config
+This is the main entry point for my literate configuration.  I've
+decided to split my configurations into seperate ~.org~ files to keep
+related stuff together.
+
+To use this configuration add the following codeblock to you
+=~/.emacs.d/init.el=, changing the path to this configuration file
+accordingly.
+
+Alternatively, you can press =C-c C-c= on this codeblock to
+evaluate immediately.
+#+begin_src emacs-lisp :tangle init.el
+;; load main literate configuration file
+(package-initialize)
+
+(setq faijdherbe-config--config-path
+      "~/Documents/git/faijdherbe.net/faijdherbe.net/content/emacs/")
+
+(org-babel-load-file
+ (expand-file-name (concat (string-trim faijdherbe-config--config-path "/")
+                           "/01-main.org")))
+#+end_src
+
+* Specific Configurations
+Below we find all our configuration files.  I should be able to merge
+the first two columns as it's pretty much redundant info, but let's
+postpone this for now. 
+  
+#+TBLNAME: orgmode-files
+| config   | filename        | enabled | description                                                                            |
+|----------+-----------------+---------+----------------------------------------------------------------------------------------|
+| [[https:/emacs/02-package/][package]]  | 02-package.org  | yes     | setup package repository and package manager                                           |
+| exwm     | 03-exwm.org     | no      | setup emacs as window-manager                                                          |
+| theme    | 20-theme.org    | yes     | theme and ui config                                                                    |
+| dev      |                 | no      | generic development                                                                    |
+| php      |                 | no      | as this is my main language, it deserves its own config file                           |
+| lsp      |                 | no      | lsp support (eglot?). This gets its own file because i'm transitioning from =lsp-mode= |
+| org-mode |                 | no      | org-roam and org-agenda configuration                                                  |
+
+The following script will use the table above as source to load all
+other configurations in order - if enabled.
+
+#+NAME: load-configs
+#+begin_src emacs-lisp :var files=orgmode-files
+(dolist (record files)
+  (let* ((filename (cadr record))
+         (enabled (caddr record))
+         (dir (or faijdherbe-config--config-path ""))
+         (path (expand-file-name (concat (string-trim dir "/")
+                                         "/" filename))))
+    (if (and (string= "yes" enabled)
+             (file-readable-p path))
+        (progn 
+          (message "load: %s" filename)
+          (org-babel-load-file path)))))
+#+end_src

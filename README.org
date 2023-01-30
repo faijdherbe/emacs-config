@@ -1,5 +1,7 @@
 #+TITLE: Literate Emacs Configuration
 #+AUTHOR: Jeroen Faijdherbe
 
-* TODO foo bar bla blah
-lorum ipsum blahblah
+Welcome to my literate Emacs configuration.
+
+Visit [[file:01-main.org][01-main.org]] to start exploring my configuration. 
+  
