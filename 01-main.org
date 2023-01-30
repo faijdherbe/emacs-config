@@ -15,18 +15,29 @@ accordingly.
 
 Alternatively, you can press =C-c C-c= on this codeblock to
 evaluate immediately.
+
 #+begin_src emacs-lisp :tangle init.el
 ;; load main literate configuration file
 (package-initialize)
 
 (setq faijdherbe-config--config-path
-      "~/Documents/git/faijdherbe.net/faijdherbe.net/content/emacs/")
+      "~/Documents/git/faijdherbe.net/faijdherbe.net/content/emacs-config/")
 
 (org-babel-load-file
  (expand-file-name (concat (string-trim faijdherbe-config--config-path "/")
                            "/01-main.org")))
 #+end_src
 
+* Testing                                                          :noexport:
+To test this configuration we can execute this codeblock.  It will
+tangle the =init.el=, and launch emacs a new subprocess.  Just press
+=C-c C-c= to start testing. 
+#+begin_src emacs-lisp :tangle no
+(org-babel-tangle-file (buffer-file-name))
+(call-process "emacs" nil 0 nil "-Q" "-l" "init.el" "--debug")
+#+end_src
+
+  
 * Specific Configurations
 Below we find all our configuration files.  I should be able to merge
 the first two columns as it's pretty much redundant info, but let's
@@ -35,9 +46,9 @@ postpone this for now.
 #+TBLNAME: orgmode-files
 | config   | filename        | enabled | description                                                                            |
 |----------+-----------------+---------+----------------------------------------------------------------------------------------|
-| [[https:/emacs/02-package/][package]]  | 02-package.org  | yes     | setup package repository and package manager                                           |
+| [[file:02-package.org][package]]  | 02-package.org  | yes     | setup package repository and package manager.                                          |
 | exwm     | 03-exwm.org     | no      | setup emacs as window-manager                                                          |
-| theme    | 20-theme.org    | yes     | theme and ui config                                                                    |
+| [[file:20-theme.org][theme]]    | 20-theme.org    | yes     | theme and ui config                                                                    |
 | dev      |                 | no      | generic development                                                                    |
 | php      |                 | no      | as this is my main language, it deserves its own config file                           |
 | lsp      |                 | no      | lsp support (eglot?). This gets its own file because i'm transitioning from =lsp-mode= |

@@ -2,7 +2,7 @@
 #+DATE: 2023-01-22T15:17:01+01:00
 #+DRAFT: false
 #+PROPERTY: header-args:emacs-lisp :comments link :results none
-#+TAGS[]: 
+#+TAGS[]: emacs config
 
 * Repositories
 First we'll setup our different repositories.

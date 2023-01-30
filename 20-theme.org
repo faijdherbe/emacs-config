@@ -1,6 +1,6 @@
 #+TITLE: Theme Configuration
 #+DATE: 2023-01-23T12:07:09+01:00
-#+DRAFT: true
+#+DRAFT: false
 #+PROPERTY: header-args:emacs-lisp :comments link :results none
 #+TAGS[]: emacs config theme modus
 
@@ -18,8 +18,8 @@ mouse as possible.
 (scroll-bar-mode 0)
 #+end_src
 
-* Theming
-** Todo                                                             :noexport:
+* Theming :noexport:
+** Todo               
   - [X] modus themes
     - default vivendi-tinted, might need some reviewing if its the
       best choice as i dont like the blue BG, i'd rather have it
@@ -32,6 +32,7 @@ mouse as possible.
   - [ ] hl-line?
 
 * Modus
+I really like the [[https://git.sr.ht/~protesilaos/modus-themes][Modus themes]].  It's easy to configure, has a consistent style and comes in both light and dark modes.  
   
 #+begin_src emacs-lisp
 (use-package modus-themes
@@ -64,4 +65,5 @@ mouse as possible.
   ; working in direct sunlight
   (enable-theme 'modus-vivendi-tinted))
 #+end_src
+
 
