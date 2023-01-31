@@ -39,7 +39,7 @@ During debugging i'd like to use a desktop file for quick launching Emacs with o
 
 The path from the configuration earlier is injected upon tangling this file (=C-c C-v t=).
 
-  #+begin_src conf :tangle ~/.local/share/applications/mymacs.desktop :var basepath=CONFIG_BASE_PATH
+  #+begin_src conf-desktop :tangle ~/.local/share/applications/mymacs.desktop :var basepath=CONFIG_BASE_PATH
 [Desktop Entry]
 Name=Mymacs
 Type=Application
@@ -48,7 +48,8 @@ Exec=/usr/bin/emacs -Q --eval "(setq jf/dev-env t)" -l "<<CONFIG_BASE_PATH()>>/i
 Icon=/opt/giteye/icon.xpm
 Name[en_US]=Mymacs
   #+end_src
-  
+/note: It looks like GitHub and Hugo don't support =conf-desktop=, hence the lack of syntax highlighting. I'll need to look into this some other time./
+
 * Specific Configurations
 Below we find all our configuration files.  I should be able to merge
 the first two columns as it's pretty much redundant info, but let's
