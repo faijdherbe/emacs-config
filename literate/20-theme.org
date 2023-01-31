@@ -63,7 +63,9 @@ I really like the [[https://git.sr.ht/~protesilaos/modus-themes][Modus themes]].
   
   ; enable vivendi by default, as I'll only use operandi when I'm
   ; working in direct sunlight
-  (enable-theme 'modus-vivendi-tinted))
+  (enable-theme (if (bound-and-true-p jf/dev-env)
+                    'modus-operandi-tinted
+                  'modus-vivendi-tinted)))
 #+end_src
 
 
