@@ -3,6 +3,7 @@
 #+DRAFT: false
 #+PROPERTY: header-args:emacs-lisp :comments link :results none
 #+TAGS[]: emacs config
+#+ALIASES[]: /emacs-config/01-main/02-package.html
 
 * Repositories
 First we'll setup our different repositories.
