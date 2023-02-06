@@ -59,8 +59,8 @@ postpone this for now.
 | [[file:02-package.org][package]]    | 02-package.org    | yes     | setup package repository and package manager.                                          |
 | exwm       | 03-exwm.org       | no      | setup emacs as window-manager                                                          |
 | [[file:20-theme.org][theme]]      | 20-theme.org      | yes     | theme and ui config                                                                    |
-| navigation | 30-navigation.org | yes     | navigation and autocomplete                                                           |
-| [[file:30-dev.org][dev]]        | 40-dev.org        | yes     | generic development                                                                    |
+| [[file:30-navigation.org][navigation]] | 30-navigation.org | yes     | navigation and autocomplete                                                           |
+| [[file:40-dev.org][dev]]        | 40-dev.org        | yes     | generic development                                                                    |
 | php        |                   | no      | as this is my main language, it deserves its own config file                           |
 | org-mode   |                   | no      | org-roam and org-agenda configuration                                                  |
 | config     | 99-config.org     | yes     | Local config that can set some specific settings                                       |
