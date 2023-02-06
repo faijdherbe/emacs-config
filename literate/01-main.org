@@ -14,17 +14,15 @@ To use this configuration add the following codeblock to your
 =~/.emacs.d/init.el=, changing the path to this configuration file
 accordingly.
 
-#+NAME: CONFIG_BASE_PATH
-#+begin_src emacs-lisp
-"~/Documents/git/faijdherbe.net/emacs-config/literate"
-#+end_src
-
-#+begin_src emacs-lisp :tangle init.el :var path=CONFIG_BASE_PATH 
+#+begin_src emacs-lisp :tangle init.el
 ;; load main literate configuration file
+;(setq user-init-file (or load-file-name (buffer-file-name)))
+;(setq user-emacs-directory (concat (file-name-directory user-init-file) "../.emacs.d"))
+
 (package-initialize)
 
 (setq faijdherbe-config--config-path
-      path)
+      "~/Documents/git/faijdherbe.net/emacs-config/literate")
 
 (org-babel-load-file
  (expand-file-name (concat (string-trim faijdherbe-config--config-path "/")
@@ -39,12 +37,12 @@ During debugging i'd like to use a desktop file for quick launching Emacs with o
 
 The path from the configuration earlier is injected upon tangling this file (=C-c C-v t=).
 
-  #+begin_src conf-desktop :tangle ~/.local/share/applications/mymacs.desktop :var basepath=CONFIG_BASE_PATH
+  #+begin_src conf-desktop :tangle ~/.local/share/applications/mymacs.desktop 
 [Desktop Entry]
 Name=Mymacs
 Type=Application
 Comment=Emacs with my WIP Configuration
-Exec=/usr/bin/emacs -Q --eval "(setq jf/dev-env t)" -l "<<CONFIG_BASE_PATH()>>/init.el"
+Exec=/usr/bin/emacs -Q --eval "(setq jf/dev-env t)" -l "~/Documents/git/faijdherbe.net/emacs-config/literate/init.el"
 Icon=/opt/giteye/icon.xpm
 Name[en_US]=Mymacs
   #+end_src
@@ -56,15 +54,18 @@ the first two columns as it's pretty much redundant info, but let's
 postpone this for now. 
   
 #+TBLNAME: orgmode-files
-| config   | filename        | enabled | description                                                                            |
-|----------+-----------------+---------+----------------------------------------------------------------------------------------|
-| [[file:02-package.org][package]]  | 02-package.org  | yes     | setup package repository and package manager.                                          |
-| exwm     | 03-exwm.org     | no      | setup emacs as window-manager                                                          |
-| [[file:20-theme.org][theme]]    | 20-theme.org    | yes     | theme and ui config                                                                    |
-| dev      |                 | no      | generic development                                                                    |
-| php      |                 | no      | as this is my main language, it deserves its own config file                           |
-| lsp      |                 | no      | lsp support (eglot?). This gets its own file because i'm transitioning from =lsp-mode= |
-| org-mode |                 | no      | org-roam and org-agenda configuration                                                  |
+| config     | filename          | enabled | description                                                                            |
+|------------+-------------------+---------+----------------------------------------------------------------------------------------|
+| [[file:02-package.org][package]]    | 02-package.org    | yes     | setup package repository and package manager.                                          |
+| exwm       | 03-exwm.org       | no      | setup emacs as window-manager                                                          |
+| [[file:20-theme.org][theme]]      | 20-theme.org      | yes     | theme and ui config                                                                    |
+| navigation | 30-navigation.org | yes     | navigation and autocomplete                                                           |
+| [[file:30-dev.org][dev]]        | 40-dev.org        | yes     | generic development                                                                    |
+| php        |                   | no      | as this is my main language, it deserves its own config file                           |
+| lsp        |                   | no      | lsp support (eglot?). This gets its own file because i'm transitioning from =lsp-mode= |
+| org-mode   |                   | no      | org-roam and org-agenda configuration                                                  |
+| config     | 99-config.org     | yes     | Local config that can set some specific settings                                       |
+|            |                   |         |                                                                                        |
 
 The following script will use the table above as source to load all
 other configurations in order - if enabled.

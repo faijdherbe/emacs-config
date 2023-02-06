@@ -26,11 +26,7 @@ a later stage.
 #+END_SRC
 
 * Package managers
-Install some package managers.  This is a copy/paste of my current
-package managers setup, and it installs two different managers.  I'm
-not really fond of working with multiple managers, but right now I
-don't want to look into this yet.  I've added them both, but disabled
-=straight= as I don't think I'll need it right away.
+Install some package managers.
   
 ** use-package
 #+begin_src emacs-lisp
@@ -41,14 +37,9 @@ don't want to look into this yet.  I've added them both, but disabled
 #+end_src
 
 ** straight
-/Disabled for now/, as I'm not sure when I'll need it.  Maybe I can
-replace =use-package= whenever there is a need to install =straight=.
-Leaving it here for quick access though.  Also, this code pulls a
-script from github and executes it right away. this does not sound
-very secure to me, although the same thing kind of happens when
-installing new packages or updates...
+Using straight to install packages directly from github.
 
-#+begin_src emacs-lisp :tangle no 
+#+begin_src emacs-lisp
 ;; Bootstrapping straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
