@@ -62,7 +62,6 @@ postpone this for now.
 | navigation | 30-navigation.org | yes     | navigation and autocomplete                                                           |
 | [[file:30-dev.org][dev]]        | 40-dev.org        | yes     | generic development                                                                    |
 | php        |                   | no      | as this is my main language, it deserves its own config file                           |
-| lsp        |                   | no      | lsp support (eglot?). This gets its own file because i'm transitioning from =lsp-mode= |
 | org-mode   |                   | no      | org-roam and org-agenda configuration                                                  |
 | config     | 99-config.org     | yes     | Local config that can set some specific settings                                       |
 |            |                   |         |                                                                                        |

@@ -1,4 +1,9 @@
 #+TITLE: Dev config
+#+DATE: 2023-03-06T23:20:00+01:00
+#+DRAFT: false
+#+PROPERTY: header-args:emacs-lisp :comments link :results none
+#+TAGS[]: emacs config
+#+ALIASES[]: /emacs-config/01-main/40-dev.html
 
 * jira-jump
 This is my personal (and first ever) emacs pacakge that I use to for
@@ -21,8 +26,19 @@ quickly jumping to Jira boards and issues.
 			   (projects . ("DEVIMPR" "ONBOARDNG" "SUPPRT")))))))
 #+end_src
 
-* Eglot
+* TODO Eglot
+
+I would really like to get into eglot.
+
 #+begin_src emacs-lisp
+(use-package eglot
+  :ensure)
+#+end_src
+
+This piece should move to =php.org= though...
+
+#+begin_src emacs-lisp
+
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(php-mode . ("intelephense" "--stdio"))))
